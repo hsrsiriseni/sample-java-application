@@ -1,7 +1,7 @@
-package com.datadoghq.workshops.samplevulnerablejavaapp.service;
+package com.datadoghq.workshops.samplejavaapp.service;
 
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.FileForbiddenFileException;
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.FileReadException;
+import com.datadoghq.workshops.samplejavaapp.exception.FileForbiddenFileException;
+import com.datadoghq.workshops.samplejavaapp.exception.FileReadException;
 import org.springframework.stereotype.Service;
 
 import java.io.*;

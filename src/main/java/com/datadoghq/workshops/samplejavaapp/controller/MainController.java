@@ -1,15 +1,15 @@
-package com.datadoghq.workshops.samplevulnerablejavaapp.controller;
+package com.datadoghq.workshops.samplejavaapp.controller;
 
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.FileForbiddenFileException;
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.FileReadException;
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.InvalidDomainException;
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.UnableToTestDomainException;
-import com.datadoghq.workshops.samplevulnerablejavaapp.http.DomainTestRequest;
-import com.datadoghq.workshops.samplevulnerablejavaapp.http.ViewFileRequest;
-import com.datadoghq.workshops.samplevulnerablejavaapp.http.WebsiteTestRequest;
-import com.datadoghq.workshops.samplevulnerablejavaapp.service.DomainTestService;
-import com.datadoghq.workshops.samplevulnerablejavaapp.service.FileService;
-import com.datadoghq.workshops.samplevulnerablejavaapp.service.WebsiteTestService;
+import com.datadoghq.workshops.samplejavaapp.exception.FileForbiddenFileException;
+import com.datadoghq.workshops.samplejavaapp.exception.FileReadException;
+import com.datadoghq.workshops.samplejavaapp.exception.InvalidDomainException;
+import com.datadoghq.workshops.samplejavaapp.exception.UnableToTestDomainException;
+import com.datadoghq.workshops.samplejavaapp.http.DomainTestRequest;
+import com.datadoghq.workshops.samplejavaapp.http.ViewFileRequest;
+import com.datadoghq.workshops.samplejavaapp.http.WebsiteTestRequest;
+import com.datadoghq.workshops.samplejavaapp.service.DomainTestService;
+import com.datadoghq.workshops.samplejavaapp.service.FileService;
+import com.datadoghq.workshops.samplejavaapp.service.WebsiteTestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

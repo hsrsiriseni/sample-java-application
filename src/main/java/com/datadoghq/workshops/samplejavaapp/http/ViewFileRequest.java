@@ -1,4 +1,4 @@
-package com.datadoghq.workshops.samplevulnerablejavaapp.http;
+package com.datadoghq.workshops.samplejavaapp.http;
 
 import lombok.Data;
 

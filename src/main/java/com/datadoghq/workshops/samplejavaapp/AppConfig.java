@@ -1,4 +1,4 @@
-package com.datadoghq.workshops.samplevulnerablejavaapp;
+package com.datadoghq.workshops.samplejavaapp;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

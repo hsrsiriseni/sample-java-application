@@ -1,13 +1,13 @@
-package com.datadoghq.workshops.samplevulnerablejavaapp;
+package com.datadoghq.workshops.samplejavaapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SampleVulnerableJavaAppApplication {
+public class SampleJavaAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SampleVulnerableJavaAppApplication.class, args);
+		SpringApplication.run(SampleJavaAppApplication.class, args);
 	}
 
 }

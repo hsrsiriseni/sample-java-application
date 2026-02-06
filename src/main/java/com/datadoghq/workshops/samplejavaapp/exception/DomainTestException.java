@@ -1,4 +1,4 @@
-package com.datadoghq.workshops.samplevulnerablejavaapp.exception;
+package com.datadoghq.workshops.samplejavaapp.exception;
 
 public class DomainTestException extends Exception {
   public DomainTestException(String message) {

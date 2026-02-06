@@ -1,8 +1,8 @@
-package com.datadoghq.workshops.samplevulnerablejavaapp.service;
+package com.datadoghq.workshops.samplejavaapp.service;
 
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.DomainTestException;
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.InvalidDomainException;
-import com.datadoghq.workshops.samplevulnerablejavaapp.exception.UnableToTestDomainException;
+import com.datadoghq.workshops.samplejavaapp.exception.DomainTestException;
+import com.datadoghq.workshops.samplejavaapp.exception.InvalidDomainException;
+import com.datadoghq.workshops.samplejavaapp.exception.UnableToTestDomainException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -18,11 +18,10 @@ public class DomainTestService {
 
   public String testDomain(String domainName) throws DomainTestException {
     if (!isValidDomainName(domainName)) {
-      throw new InvalidDomainException("Invalid domain name: " + domainName + " - don't try to hack us!");
+      throw new InvalidDomainException("Invalid domain name: " + domainName);
     }
 
     try {
-      //TODO use ProcessBuilder which looks cleaner
       Process process = Runtime.getRuntime().exec(new String[] {"sh", "-c", "ping -c 1 " + domainName});
       if (!process.waitFor(timeoutMs, TimeUnit.MILLISECONDS)) {
         throw new UnableToTestDomainException("Timed out pinging domain");
