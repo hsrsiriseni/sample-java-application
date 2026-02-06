@@ -33,16 +33,19 @@ public class MainController {
 
   @RequestMapping(method=RequestMethod.POST, value="/test-domain", consumes="application/json")
   public ResponseEntity<String> testDomain(@RequestBody DomainTestRequest request) {
-    log.info("Testing domain " + request.domainName);
+    log.info("Testing domain {}", request.domainName);
     try {
       String result = domainTestService.testDomain(request.domainName);
       return new ResponseEntity<>(result, HttpStatus.OK);
     } catch(InvalidDomainException e) {
-      return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+      log.info("Invalid domain name provided: {}", request.domainName);
+      return new ResponseEntity<>("Invalid domain name", HttpStatus.BAD_REQUEST);
     } catch (UnableToTestDomainException e) {
-      return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+      log.warn("Unable to test domain: {}", request.domainName, e);
+      return new ResponseEntity<>("Unable to test domain", HttpStatus.INTERNAL_SERVER_ERROR);
     } catch(Exception e) {
-      return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+      log.error("Unexpected error testing domain: {}", request.domainName, e);
+      return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
