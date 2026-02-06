@@ -3,6 +3,7 @@ package com.datadoghq.workshops.samplejavaapp.controller;
 import com.datadoghq.workshops.samplejavaapp.exception.FileForbiddenFileException;
 import com.datadoghq.workshops.samplejavaapp.exception.FileReadException;
 import com.datadoghq.workshops.samplejavaapp.exception.InvalidDomainException;
+import com.datadoghq.workshops.samplejavaapp.exception.InvalidURLException;
 import com.datadoghq.workshops.samplejavaapp.exception.UnableToTestDomainException;
 import com.datadoghq.workshops.samplejavaapp.http.DomainTestRequest;
 import com.datadoghq.workshops.samplejavaapp.http.ViewFileRequest;
@@ -51,9 +52,17 @@ public class MainController {
 
   @RequestMapping(method=RequestMethod.POST, value="/test-website", consumes="application/json")
   public ResponseEntity<String> testWebsite(@RequestBody WebsiteTestRequest request) {
-    log.info("Testing website " + request.url);
-    String result = websiteTestService.testWebsite(request);
-    return new ResponseEntity<>(result, HttpStatus.OK);
+    log.info("Testing website {}", request.url);
+    try {
+      String result = websiteTestService.testWebsite(request);
+      return new ResponseEntity<>(result, HttpStatus.OK);
+    } catch (InvalidURLException e) {
+      log.warn("Blocked website test attempt. reason={} url={}", e.getReason(), request.url);
+      return new ResponseEntity<>("Invalid URL", HttpStatus.BAD_REQUEST);
+    } catch (Exception e) {
+      log.error("Unexpected error testing website url={}", request.url, e);
+      return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   @RequestMapping(method=RequestMethod.POST, value="/view-file", consumes="application/json")
